@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "ecomseller"
+version = "0.1.0"
+description = ""
+authors = ["Nik Bezmaternykh <nikitabit@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+clickhouse-driver = "^0.2.6"
+clickhouse-sqlalchemy = "^0.2.4"
+environs = "^9.5.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

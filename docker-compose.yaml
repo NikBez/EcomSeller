@@ -1,0 +1,10 @@
+version: '3'
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server
+    restart: always
+    ports:
+      - "8123:8123" # HTTP-порт для запросов к ClickHouse
+      - "9000:9000" # HTTP-порт для запросов к ClickHouse
+    volumes:
+      - ./config.xml:/etc/clickhouse-server/config.d/config.xml # Файл конфигурации
