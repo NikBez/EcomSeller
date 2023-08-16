@@ -13,3 +13,7 @@ def parse():
             insert_record(session, etgb['posting_number'], etgb['etgb'])
     else:
         print('Запрос к OZON не выдал результатов')
+
+
+if __name__ == '__main__':
+    parse()
