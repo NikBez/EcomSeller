@@ -19,7 +19,7 @@ docker-compose up
 
 Для запуска скрипта:
 ````
-python3 scrip.py
+python3 script.py
 ````
 
 Для доступа к endpoint:
