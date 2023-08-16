@@ -7,4 +7,4 @@ services:
       - "8123:8123" # HTTP-порт для запросов к ClickHouse
       - "9000:9000" # HTTP-порт для запросов к ClickHouse
     environment:
-      - CLICKHOUSE_PASSWORD=${CLICKHOUSE_SERVER_PASSWORD} # Пароль пользователя
+      - CLICKHOUSE_PASSWORD=${CLICKHOUSE_PASSWORD} # Пароль пользователя
