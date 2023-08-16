@@ -1,23 +1,34 @@
-from clickhouse_driver import connect
+from clickhouse_driver import Client
+
 from config.config import Settings
+
 
 class ClickHouseConnector:
 
     @staticmethod
-    def create_db(con):
-        with con.cursor() as cursor:
-            cursor.execute('SHOW databases')
-            result = cursor.fetchall()
-            print(result)
+    def check_before_laungh():
+        session = db.connect()
+        session.execute('CREATE DATABASE IF NOT EXISTS ozon')
+        table_schema = """
+                CREATE TABLE IF NOT EXISTS ozon.etgb (
+                    posting_number String,
+                    etgb_number String,
+                    etgb_date String,
+                    etgb_url String
+        
+                ) ENGINE = MergeTree()
+                ORDER BY posting_number
+                """
+        session.execute(table_schema)
 
     def connect(self):
-        con = connect(Settings.CLICKHOUSE_DSN)
-        self.create_db(con)
-
-
-    def create_tables(self):
-        pass
+        try:
+            with Client(Settings.CLICKHOUSE_HOST, password=Settings.CLICKHOUSE_PASSWORD) as client:
+                return client
+        except Exception as e:
+            print(f"Error connecting to ClickHouse: {e}")
+            return None
 
 
 db = ClickHouseConnector()
-db.connect()
+db.check_before_laungh()
