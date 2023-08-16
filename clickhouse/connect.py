@@ -13,7 +13,7 @@ class ClickHouseConnector:
                 CREATE TABLE IF NOT EXISTS ozon.etgb (
                     posting_number String,
                     etgb_number String,
-                    etgb_date String,
+                    etgb_date DateTime,
                     etgb_url String
         
                 ) ENGINE = MergeTree()
