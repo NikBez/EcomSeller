@@ -1,13 +1,12 @@
 import json
 from datetime import datetime, timedelta
-from fastapi import HTTPException
-import aiohttp
 
-from clickhouse.connect import db
-from clickhouse.crud import insert_record
-from random import randint
+import aiohttp
+from fastapi import HTTPException
 
 from api.schemas import EtgbBase
+from clickhouse.connect import db
+from clickhouse.crud import insert_record
 
 
 async def transfer_ETGB_from_ozon_to_ch(Client_Id, Api_Key):
@@ -32,27 +31,6 @@ async def transfer_ETGB_from_ozon_to_ch(Client_Id, Api_Key):
         response = await response.text()
         new_etgbs = json.loads(response)
 
-    new_etgbs = {
-
-        "result": [
-            {
-                "posting_number": f"{randint(0, 999999)}",
-                "etgb": {
-                    "number": "985478",
-                    "date": "st34243ring",
-                    "url": "str432ing"
-                }
-            },
-            {
-                "posting_number": f"{randint(0, 999999)}",
-                "etgb": {
-                    "number": "77897",
-                    "date": "7897",
-                    "url": "7987"
-                }
-            }
-        ]
-    }
     if new_etgbs['result']:
         session = db.connect()
         new_records = []
