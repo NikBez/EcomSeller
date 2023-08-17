@@ -15,7 +15,6 @@ class ClickHouseConnector:
                     etgb_number String,
                     etgb_date DateTime,
                     etgb_url String
-        
                 ) ENGINE = MergeTree()
                 ORDER BY posting_number
                 """
@@ -29,6 +28,4 @@ class ClickHouseConnector:
             print(f"Error connecting to ClickHouse: {e}")
             return None
 
-
 db = ClickHouseConnector()
-db.check_before_laungh()
