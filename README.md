@@ -15,7 +15,7 @@ docker-compose up
 ```
 ## Описание 
 - Скрипт script.py обращается к API OZON-SELLER, и загружает данные о ETGB за последние 4 дня в докерезированную базу Clickhouse.
-- Endpoint к базе реализован на FastAPi.
+- Сервис на базе FastAPI позволяет просмотреть все записи в Clickhouse а так же подгрузить новые используя свои учетные данные OZON 
 
 Для запуска скрипта:
 ````
@@ -25,6 +25,7 @@ python3 script.py
 Для доступа к endpoint:
 ````
 uvicorn main:app
+127.0.0.1:8000/docs
 ````
 
 
